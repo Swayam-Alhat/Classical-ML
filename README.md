@@ -59,7 +59,8 @@ For Dimensionality Reduction, following algorithms are used -
 
 ### 3. Reinforcement Learning Algorithms
 
-**This algorithms learn by trials and errors** Following are Reinforcement algorithms -
+**This algorithms learn by trials and errors**. Agent learns by interacting with environment — gets reward for good actions, penalty for bad ones.  
+Following are Reinforcement algorithms -
 
 1. Q-Learning
 2. Deep Q-Network - DQN
