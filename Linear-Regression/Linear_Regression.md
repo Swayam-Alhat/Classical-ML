@@ -106,4 +106,4 @@ This steps are repeated until MSE remain unchange or changes very slightly. This
 
 _Now this optimal values of m and b are set. And using this values, algorithms predicts y (house price) for new x values (new house size)_
 
-> > Linear Regression finds optimal m and b by minimizing MSE using Gradient Descent. Once trained, it predicts y for any new x using y = mx + b.
+> **Linear Regression finds optimal m and b by minimizing MSE using Gradient Descent. Once trained, it predicts y for any new x using y = mx + b.**
