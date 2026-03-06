@@ -2,7 +2,9 @@
 
 Linear Regression is supervised ML algorithm. Meaning it learns from labeled data.  
 
-Its main goal is to find best fit straight line on graph of training data. That is, find the linear equation (represented in slope intercept form i.e y = mx + b) which calculates/predicts y for training data. And then compare actual y with predicted y so to calculate MSE and further Gradient.
+Its main goal is to find best fit straight line on graph of training data. That is, find the linear equation (represented in slope intercept form i.e y = mx + b) which calculates/predicts y for training data. And then compare actual y with predicted y so to calculate MSE and further Gradient which helps to update m and b. 
+
+> Note : Actually m and b values are updated at each iteration.
 
 
 ## Explaintion
@@ -19,7 +21,7 @@ So, algorithm aims to find the linear equation which can predict house price for
 
 Now, if we plot the graph of above data, we will have house size on X-axis & house price on Y-axis.
 
-So, in `y = mx + b`,
+So, in `y = mx + b`,  
 y is any point on Y-axis  
 x is any point on X-axis  
 m is slope (how much y changes when x increases by 1 unit)  
