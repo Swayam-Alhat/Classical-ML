@@ -3,11 +3,6 @@
 Implementing Machine Learning algorithms from scratch in Python
 — without using ML libraries like Scikit-learn.
 
-## Goal
-
-Build deep understanding of how ML algorithms work internally
-by implementing them using only Python and NumPy.
-
 ## Algorithms
 
 - [ ] Linear Regression
