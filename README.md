@@ -77,4 +77,4 @@ Following are Reinforcement algorithms -
 2. Deep Q-Network - DQN
 
 > [!NOTE]  
-> Above are folders which contains implementations of ML algorithms
+> Each folder is named as a specific ML algorithm and contains its implementation
