@@ -13,6 +13,8 @@ by implementing them using only Python and NumPy.
 - [ ] Linear Regression
 - [ ] Logistic Regression
 - [ ] Decision Trees
+- [ ] KNN
+- [ ] K-means clustering
 
 ## Foundation
 
