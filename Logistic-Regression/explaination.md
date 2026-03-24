@@ -42,15 +42,15 @@ Since, Log-odds outputs value within (−∞, ∞), we can say Linear function y
 
 > Because $b_{0}$ + $b_{1}$ . $x_{1}$ and log-odds outputs value which lies within (−∞, ∞).
 
-$ \text{log} \text{(}\frac{p(x)}{1 - p(x)} \text{)}$ = $b_{0}$ + $b_{1}$. $x_{1}$
+$`\text{log} \text{(}\frac{p(x)}{1 - p(x)} \text{)}`$ = $b_{0}$ + $b_{1}$. $x_{1}$
 
 We can then exponentiate both sides to get back to odds:
 
-$ \frac{p(x)}{1 - p(x)}$ = $e^{b_0 + b_1 . x_1}$
+$`\frac{p(x)}{1 - p(x)}`$ = $e^{b_0 + b_1 . x_1}$
 
 Solving for `p(x)`we get the sigmoid function, which helps ensure the predicted value stays between 0 and 1:
 
-p(x) = $ \frac{e^{b_0 + b_1 . x_1}}{1 + e^{b_0 + b_1 . x_1}} $
+p(x) = $`\frac{e^{b_0 + b_1 . x_1}}{1 + e^{b_0 + b_1 . x_1}}`$
 
 > [!NOTE]  
 > The above form is equivalent to the more common compact form:
