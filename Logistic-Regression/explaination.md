@@ -213,8 +213,27 @@ This formula has some flaws -
 - We want to apply gradient descent for optimization and gradient descent minimizes.  
    **_solution - multiply with_** $`(-1)`$
 
-  > [!NOTE]
+  > [!NOTE]  
+  > Read about gradient descent from Gradient-descent.md file
 
 - As we apply Logarithm, **product** converts into **sum**.  
   **_solution - divide it by n (total number of data points)_**  
   **_Multiply with_** $`\frac{1}{n}`$
+
+Applying above mentioned changes
+
+log($`L(\theta)`$) = $`\sum_{i=1}^{n}`$ $` log ([y_p]^{y} . [1 - y_p]^{1 - y})`$
+
+```
+since
+log(a,b) = log(a) + log(b)
+```
+
+log($`L(\theta)`$) = $`\sum_{i=1}^{n}`$ $`log([y_p]^{y}) + log([1 - y_p]^{1 - y})`$
+
+since  
+$`log(a^{b}) = b . log(a) `$
+
+log($`L(\theta)`$) = $`\sum_{i=1}^{n}`$ $`y . log(y_p) + (1 - y) . log(1 - y_p)`$
+
+Now , we multiply it with $`frac`$
