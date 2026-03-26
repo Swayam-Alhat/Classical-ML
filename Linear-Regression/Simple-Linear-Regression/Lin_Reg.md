@@ -77,6 +77,27 @@ Gradient tells us how much the MSE changes when we slightly change m or b.
 
 _This is how Gradient Descent comes in picture_
 
+### What Gradient descent actually does
+
+Gradient descent calculates how a loss function changes when a parameter changes slightly — and by how much. This tells us in which direction and by how much to update each parameter to reduce the loss.
+
+For linear regression, the loss function is **MSE**. We want to find values of `m` and `b` that minimize it. (**_As we know MSE is Mean Error, so obviously, it should decrease_**)
+
+We calculate the gradient of `m` — how **MSE** changes when `m` changes:
+
+- If `grad(m)` is positive → **MSE** increases as `m` increases. So `m` should decrease
+- If `grad(m)` is negative → **MSE** decreases as `m` increases. So `m` should increase
+
+The update formula handles this automatically
+
+```
+m = m - learning_rate * grad(m)
+```
+
+When `grad(m)` is positive, we subtract it from `m`, making `m` smaller, which brings **MSE** down. **_The learning rate controls how large each step is_**. The same update is applied to `b`.
+
+### Derivation of Gradient descent formula
+
 That is called derivative from calculus
 
 ```
