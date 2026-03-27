@@ -210,8 +210,9 @@ This formula has some flaws -
 - Numerical underflow (multiplying hundreds of tiny probabilities together approaches zero and breaks floating point)  
   **_solution - Take Logarithm of whole function_**
 
-- We want to apply gradient descent for optimization and gradient descent minimizes.  
-   **_solution - multiply with_** $`(-1)`$
+- We want to apply gradient descent for optimization and gradient descent minimizes. (But here we want to maximize, meaning if $`L(\theta)`$ is 0.002 which is close to 0 then we want to maximize it to 1 )
+
+  **_solution - multiply with_** $`(-1)`$
 
   > [!NOTE]  
   > Read about gradient descent from Gradient-descent.md file
@@ -236,4 +237,12 @@ $`log(a^{b}) = b . log(a) `$
 
 log($`L(\theta)`$) = $`\sum_{i=1}^{n}`$ $`y . log(y_p) + (1 - y) . log(1 - y_p)`$
 
-Now , we multiply it with $`frac`$
+Now , we multiply it with $`\frac{-1}{n}`$
+
+log($`L(\theta)`$) = $` \frac{-1}{n} \sum_{i=1}^{n} y . log(y_p) + (1 - y) . log(1 - y_p)`$
+
+**_we get_**,
+
+$`J(\theta) =  \frac{-1}{n} \sum_{i=1}^{n} y . log(y_p) + (1 - y) . log(1 - y_p)`$
+
+#### This is Cross Entropy loss function
