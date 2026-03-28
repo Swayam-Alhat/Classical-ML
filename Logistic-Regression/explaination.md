@@ -221,3 +221,18 @@ here,
 
 5. Again repeat from step 1 until loss calculated using loss function is unchanged or changes slightly  
    (**_At this point, we get optimal values of m and b which are used for prediction on new unseen data_**)
+
+---
+
+# Testing of model
+
+After training, we got loss curve,
+
+![Loss curve](loss_curve.png)
+
+This means our model converged. I.e we got optimal values of parameters
+
+Also, accuracy test, meaning we compare prediction and actual values or outcome, we got  
+$81.98$ %
+
+**_This means out of all predictions, almost 82% predictions are accurate_**
