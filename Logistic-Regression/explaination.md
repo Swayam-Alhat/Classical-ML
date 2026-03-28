@@ -178,10 +178,42 @@ log($`L(\theta)`$) = $` \frac{-1}{n} \sum_{i=1}^{n} y . log(y_p) + (1 - y) . log
 **_This is what we minimizes using gradient descent_**
 
 > [!NOTE]
-> Basically, we **_maximize_** the function as we want the value close to **1**, but **_gradient descent_** formula is fixed and it always **_minimizes_**. Thats why, we flipped function curve by negating it (**_multiplied with -1_**). So. now we use original gradient descent (which minimizes) but as we flipped the sides, we are actually maximizing the function
+> Basically, we **_maximize_** the function as we want the value close to **1**, but **_gradient descent_** formula is fixed and it always **_minimizes_**. Thats why, we flipped function curve by negating it (**_multiplied with -1_**). So. now we use original gradient descent (which minimizes) but as we flipped the sides, we are actually maximizing the function  
+> Read about gradient descent from Gradient-descent.md file
 
 #### Here comes Gradient descent which allows us to minimize the function
 
-So after calculating partial derivative of cross entropy w.r.t $`\theta`$ (single parameter), we get
+**_So after calculating partial derivative of cross entropy w.r.t $`\theta`$ (single parameter), we get_**
 
-$` gradient(\theta) = \frac{1}{n} x ( y - y_p)`$
+$$\frac{\partial J(\theta)}{\partial \theta} = \frac{1}{n} x ( y - y_p)$$
+
+So, **this is the formula for gradient calculation**
+
+then, we update parameter $`\theta`$
+
+$$\theta_{new} = \theta - \alpha \frac{\partial J(\theta)}{\partial \theta}$$
+
+**This is the update formula**
+
+here,
+
+- $`\theta_{new}`$ is new value of parameter
+- $`\theta`$ is old value of parameter
+
+* $`\alpha`$ is Learning rate (step size)
+
+* $`\frac{\partial J(\theta)}{\partial \theta}`$ is Gradient of the cost function $`j(\theta)`$ with respect to $`\theta`$
+* $`-`$ Indicates moving in the opposite direction of the gradient to minimize the function
+
+### Steps algorithm follow to learn (find optimal parameters)
+
+1. Initialize parameters (m and b) with random value (0)
+
+2. predict output using Sigmoid function
+
+3. Calculate loss using cross entropy loss function
+
+4. Calculate gradient of loss function using gradient formula and then update parameters (m and b) using update formula
+
+5. Again repeat from step 1 until loss calculated using loss function is unchanged or changes slightly  
+   (**_At this point, we get optimal values of m and b which are used for prediction on new unseen data_**)
