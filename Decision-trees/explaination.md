@@ -82,6 +82,9 @@ Thresholds tried: midpoints between sorted unique values → 85, 105, 135, 155
 
 **Best split for Glucose → Glucose <= 105** (both sides pure)
 
+> [!NOTE]
+> **_Gini impurity_** of each feature split represent whether the current split best seprates the target values. That is, if we have **_Glucose <= 105_** as best split. Means its gini impurity is lower than other feature splits
+
 ---
 
 ### Step 2 — Try all splits for Age
