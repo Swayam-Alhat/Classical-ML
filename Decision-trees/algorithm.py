@@ -11,7 +11,7 @@ df = df[df["Glucose"] != 0]
 df = df[df["BloodPressure"] != 0]
 df = df[df["SkinThickness"] != 0]
 
-# update index
+# update index (reset index)
 df.index = range(len(df))
 
 # df[df['Glucose'] != 0] — the inner part df['Glucose'] != 0 returns True/False for each row. Then df[...] keeps only the rows where it's True. So you're basically saying "give me only rows where Glucose is not zero.
@@ -20,7 +20,6 @@ df.index = range(len(df))
 training_data = df.iloc[:373, :]
 
 # implementation 
-
 splits = []
 for i in range(training_data.shape[1] - 1):
     unique_values = np.sort(training_data.iloc[:,i].unique())
@@ -67,15 +66,17 @@ for split in splits:
 # Now find best gini, and then split
 
 best_splits = []
+best_gini = []
 
 for idx, val in enumerate(gini):
 
+    # find min gini and store it
+    min_gini = np.min(val)
+    best_gini.append(min_gini)
+    
+    # find index of min gini and then best split
     best_split = splits[idx][np.argmin(val)]
     best_splits.append(best_split)
-
-print(best_splits)
-
-    
 
 
 
