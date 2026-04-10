@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+import numbers
+
 df = pd.read_csv("./Logistic-Regression/diabetes-dataset.csv")
 
 # remove unwanted features
@@ -26,7 +28,7 @@ testing_data = df.iloc[373:,:]
 def is_pure_enough(data):
     most_frequent_value = data.iloc[:,-1].value_counts().idxmax()
     ocurrence = data.iloc[:,-1].value_counts().max()
-    is_pure = ((ocurrence / len(data)) * 100) >= 95
+    is_pure = ((ocurrence / len(data)) * 100) >= 90
     return [is_pure, most_frequent_value]
 
 
@@ -141,6 +143,7 @@ def build_tree(node_data):
 
     node = {}
     node["feature"] = best_feature
+    node["split_value"] = best_split_value
     node["left_node"] = build_tree(left_node_data)
     node["right_node"] = build_tree(right_node_data)
 
@@ -149,3 +152,103 @@ def build_tree(node_data):
 
 # get a trained CART decision tree
 tree = build_tree(training_data)
+
+# print tree
+for i in tree:
+    print(i)
+    print(tree[i])
+    print("\n")
+
+
+# remove the nodes that have left leaf and right leaf as same value
+def prune_tree(node):
+
+    # if that node is integer value, return it
+    if isinstance(node, numbers.Number):
+        return node
+    
+    # if not integer, means it is dict. So further operation
+    node["left_node"] = prune_tree(node["left_node"])
+    node["right_node"] = prune_tree(node["right_node"])
+
+    # check if both are numbers
+    if isinstance(node["left_node"] , numbers.Number) and isinstance(node["right_node"] , numbers.Number):
+
+        # check if both are equal
+        if node["left_node"] == node["right_node"]:
+            return node["left_node"]
+        
+    # if both or either is dict, then return that node
+    return node
+
+# get tree after pruning
+pruned_tree = prune_tree(tree)
+
+# print tree after pruning
+for i in pruned_tree:
+    print(i)
+    print(pruned_tree[i])
+    print("\n")
+
+
+# Testing
+def prediction(decision_node, test_data):
+    # find the root feature value
+    feature = decision_node["feature"]
+
+    # use feature value to access the index of that feature value in test data
+    features = testing_data.columns.to_list()
+    index = features.index(feature)
+
+    # find the value for that feature in test_data
+    feature_value = test_data[index]
+
+    # check if value is less than or equals to split value of that feature
+    if feature_value <= decision_node["split_value"]:
+        # check if left_node is dict
+        if isinstance(decision_node["left_node"] , dict):
+            return prediction(decision_node["left_node"], test_data)
+        # if its not dict, Means decision_node is leaf node. So return left node value
+        else:
+            return decision_node["left_node"]
+        
+    # when value is greater than split value
+    else:
+        # check if right_node is dict
+        if isinstance(decision_node["right_node"] , dict):
+            return prediction(decision_node["right_node"], test_data)
+        # if its not dict, means decision_node is leaf node. so return right node value
+        else:
+            return decision_node["right_node"]
+
+# prediction array
+prediction_arr = []
+actual_outcome_arr = []
+
+# prediction process
+for i in range(len(testing_data)):
+    # get single sample of data & convert it into array
+    test_data = testing_data.iloc[i,:].to_numpy()
+
+    # add the outcome value in actual_outcome_array
+    actual_outcome_arr.append(test_data[-1])
+
+    # get prediction value for that instance
+    predicted_value = prediction(pruned_tree,test_data)
+
+    # add it in prediction array
+    prediction_arr.append(predicted_value)
+
+
+# compare prediction and actual values
+
+# it returns array of values True and false
+comparison = np.array(actual_outcome_arr) == np.array(prediction_arr)
+# collect total number of test samples
+total_test_samples = len(actual_outcome_arr)
+# get total number of correct predictions
+# sum() assumes True as 1 and False as 0. And then calculates sum of all elements
+total_correct_predictions = sum(comparison)
+# get accuracy percent
+accuracy = (total_correct_predictions / total_test_samples) * 100
+print(f"Accuracy : {accuracy} %")
