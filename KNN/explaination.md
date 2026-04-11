@@ -70,3 +70,15 @@ So before implementing, perform feature scaling on training and testing dataset
 
 > [!NOTE]
 > Use the mean and standard deviation of training data to scale testing data
+
+## Choosing k — Manual Selection
+
+Since this is a learning implementation, we manually tested k = 3, 5, and 7 on the Pima Indians dataset:
+
+| k   | Correct | Accuracy |
+| --- | ------- | -------- |
+| 3   | 119/161 | 73%      |
+| 5   | 124/161 | 77%      |
+| 7   | 123/161 | 76%      |
+
+**k = 5** gave the best accuracy and was selected as the final value.
