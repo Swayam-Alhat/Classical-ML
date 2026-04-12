@@ -56,15 +56,13 @@ So, we get Q1 and Q3. **_This means, we got to know that 50% of data points in d
 
 > **_Because 75% - 25% is 50%. And since, 25% of data is below 25 & 75% of data is below 33.5_**
 
-Now, _the middle 50% of data lives between 25 and 33.5. Everything between these two values is the "normal bulk" of our data_
+Now, ***the middle 50% of data lives between 25 and 33.5. Everything between these two values is the "normal bulk" of our data***
 
 **But**,
 
 - **_we can't throw everything which are outside of this range (i.e Q3 - Q1), because values slightly outside this range are still perfectly normal — they're just on the fringe_**
 
 - **_Also, this is range is just 50% of whole data_**
-
-So, we extend this range by `1.5` from both sides
 
 Since, `IQR = Q3 - Q1`, and this IQR is range of normal data points (i.e 33.5 - 25 = **8.5**)
 
