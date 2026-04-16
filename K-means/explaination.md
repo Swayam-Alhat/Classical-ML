@@ -336,6 +336,12 @@ Running k-means with `k=5` gives us these final cluster centroids:
 | 4       | 54  | 40                 | 37             | Older, mid income, low spender        |
 | 5       | 33  | 58                 | 49             | Mid age, mid income, mid spender      |
 
-These are meaningful, real-world segments — exactly what you'd expect from mall customer data.
+These are meaningful, real-world segments
 
 ## Feature Scaling
+
+In a production k-means implementation, feature scaling (e.g. StandardScaler) 
+should always be applied before clustering, since Euclidean distance is sensitive 
+to feature ranges. This implementation skips scaling intentionally to keep focus 
+on the core algorithm.
+
