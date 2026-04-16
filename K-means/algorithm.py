@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("./k-means/Mall_Customers.csv")
 
@@ -91,9 +92,6 @@ df = df[(df["Spending Score (1-100)"] >= range_col3[0]) & (df["Spending Score (1
 
 # Code for k-means
 
-clusters = {}
-k = 3
-
 def k_means(k, clusters):
      
     # If its first iteration, then assign random points from dataset to k centroid
@@ -115,7 +113,7 @@ def k_means(k, clusters):
             points = np.array(clusters[key]["points"])
 
             avg = np.mean(points, axis=0)
-            # axis = 0 means operates columnwise. avg is single array like [0,0,0]
+            # axis = 0 means operates columnwise. avg is single array like [avg_c1,avg_c2,avg_c3]
 
             # assign avg as centroid value
             clusters[key] = {"centroid" : avg, "points":clusters[key]["points"]}
@@ -169,10 +167,60 @@ def k_means(k, clusters):
         # return cluster dictionary
         return clusters
     else:
-        # assign points
+        # assign new points
         for i in range(k):
             clusters[f"cluster{i+1}"]["points"] = data_points[i]
         
-        # after assugning points, again run k-means
+        # after assigning points, again run k-means
         return k_means(k, clusters)
 
+
+
+# implement elbow method to find optimal k
+
+# k_arr = np.arange(1,11)
+# final_wcss_arr = []
+
+# for k in k_arr:
+#     # run k_means for each k value
+#     clusters = {}
+#     formed_clusters = k_means(k, clusters)
+
+#     # declare wcss array to store each cluster's wcss
+#     wcss_arr = []
+
+#     # get each cluster
+#     for cluster in formed_clusters:
+#         # get single point in points
+#         # calculate its distance from cluster
+#         # total Euclidean distance for each cluster
+#         euclidean_distance = []
+#         for point in np.array(formed_clusters[cluster]["points"]):
+#             # calculate distance
+#             euclidean = (sum((formed_clusters[cluster]["centroid"] - point)**2))
+#             # add euclidean in euclidean array
+#             euclidean_distance.append(euclidean)
+        
+#         # WCSS for current cluster
+#         wcss = sum(euclidean_distance)
+#         # add that wcss for current cluster in wcss array
+#         wcss_arr.append(wcss)
+    
+#     # sum(all wcss of clusters) to get final WCSS for current k value
+#     final_wcss = sum(wcss_arr)
+#     # append final wcss of k in final wcss array
+#     final_wcss_arr.append(final_wcss)
+
+# # after getting wcss for each k, we plot graph
+# plt.plot(k_arr,final_wcss_arr)
+# plt.xlabel("k values")
+# plt.ylabel("WCSS")
+# plt.title("elbow method")
+# plt.show()
+
+# Actual use of k-means
+output = k_means(5,{})
+
+for i in output:
+    print(output[i]["centroid"])
+    print("\n")
