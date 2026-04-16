@@ -10,15 +10,19 @@ Implementing Machine Learning algorithms from scratch in Python i.e without usin
 - KNN
 - K-means clustering
 
+> [!NOTE]  
+> Each folder is named as specific ML algorithm and contains its implementation.
+> Each folder contains **algorithm.py** which contains actual implementation & **explaination.md** which contains notes about implementation.
+
 ## Foundation
 
-`AI` ✅ — AI is technology that involves machines which simulate/mimics human intelligence.
+`AI` — AI is technology that involves machines which simulate/mimics human intelligence.
 
-`Machine Learning` ✅ — ML is a subset of AI that allows machines to learn from data. It involves using ML algorithms to learn patterns from data and make decisions/predictions on new, unseen data.
+`Machine Learning`  — ML is a subset of AI that allows machines to learn from data. It involves using ML algorithms to learn patterns from data and make decisions/predictions on new, unseen data.
 
-`ML Algorithms` ✅ — It's the step-by-step procedure/program that learns patterns from data.
+`ML Algorithms`  — It's the step-by-step procedure/program that learns patterns from data.
 
-`ML Models` ✅ — A trained algorithm becomes a model.
+`ML Models`  — A trained algorithm becomes a model.
 
 **So This algorithms are foundation of Machine learning.** All things are built on top of this.
 
@@ -75,5 +79,3 @@ Following are Reinforcement algorithms -
 1. Q-Learning
 2. Deep Q-Network - DQN
 
-> [!NOTE]  
-> Each folder is named as a specific ML algorithm and contains its implementation
